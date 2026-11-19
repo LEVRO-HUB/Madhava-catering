@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/madhava-experience.css';
 
+const CDN = 'https://res.cloudinary.com/eppaoadw/image/fetch/f_auto,q_auto,w_1000/';
+const SITE = 'https://madhava-catering.pages.dev';
+const exp = (file) => `${CDN}${SITE}/assets/experience/${encodeURIComponent(file)}`;
+
 function CollageImage({ className, src, alt, style }) {
   const [errored, setErrored] = useState(false);
 
@@ -121,18 +125,18 @@ export default function MadhavaExperience() {
           <div className="experience-collage-dot" aria-hidden="true" />
           <CollageImage
             className="collage-img collage-img-main"
-            src="/assets/experience/Teal-Clad Server at South Indian Wedding Feast-1.png"
+            src={exp('Teal-Clad Server at South Indian Wedding Feast-1.png')}
             alt="Madhava Catering Services staff serving guests at a traditional South Indian wedding feast"
             style={{ objectPosition: '50% 30%' }}
           />
           <CollageImage
             className="collage-img collage-img-secondary-1"
-            src="/assets/experience/Busy South Asian Catering Kitchen-2.png"
+            src={exp('Busy South Asian Catering Kitchen-2.png')}
             alt="Catering chefs preparing food in a busy event kitchen"
           />
           <CollageImage
             className="collage-img collage-img-secondary-2"
-            src="/assets/experience/Elegant South Indian Wedding Feast Hall-3.png"
+            src={exp('Elegant South Indian Wedding Feast Hall-3.png')}
             alt="Elegant banana leaf dining hall set up for a wedding celebration"
           />
         </div>
