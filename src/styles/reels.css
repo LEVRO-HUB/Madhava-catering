@@ -1,0 +1,329 @@
+.catering-reels {
+  background: var(--color-cream);
+}
+
+.reel-carousel-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reel-counter {
+  align-self: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--color-maroon);
+  background: var(--color-cream-deep);
+  border: 1px solid var(--color-terracotta);
+  border-radius: 999px;
+  padding: 5px 16px;
+}
+
+.reel-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Hovered cards scale up and lift above their neighbours — give the row
+     breathing room above/below so an enlarged card is never clipped. */
+  padding: 26px 0;
+}
+
+.reel-track {
+  flex: 1;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0 4px;
+  scrollbar-width: none;
+}
+
+.reel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.reel-slot {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+/* --- Carousel arrows: brand gold/maroon, always >=44px, high contrast ---
+   Scoped under .reel-carousel-wrapper (higher specificity than the bare
+   `.carousel-arrow` base rule shared with the testimonials carousel) so
+   these reel-specific colours always win regardless of CSS load order. */
+.reel-carousel-wrapper .carousel-arrow {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-gold);
+  color: var(--color-maroon-dark);
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(169, 39, 26, 0.3);
+  transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+  z-index: 5;
+}
+
+.reel-carousel-wrapper .carousel-arrow:hover:not(:disabled) {
+  background: var(--color-maroon);
+  color: var(--color-white);
+  transform: scale(1.08);
+}
+
+.reel-carousel-wrapper .carousel-arrow:focus-visible {
+  outline: 2px solid var(--color-maroon);
+  outline-offset: 3px;
+}
+
+.reel-carousel-wrapper .carousel-arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Reel card: dimmed by default, brightens + enlarges on hover --- */
+.reel-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #11170f;
+  box-shadow: var(--shadow-card);
+  transition: transform 350ms ease, box-shadow 350ms ease;
+  transform-origin: center;
+}
+
+.reel-card:hover {
+  transform: scale(1.06);
+  z-index: 10;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.35);
+}
+
+.reel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #11170f;
+  filter: brightness(0.65);
+  transition: filter 350ms ease, transform 350ms ease;
+}
+
+.reel-card:hover .reel-video {
+  filter: brightness(1.05);
+}
+
+.reel-fallback {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--color-maroon-dark), #2e5323);
+  padding: 0 16px;
+}
+
+.reel-fallback span {
+  color: var(--color-cream);
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+}
+
+.reel-play-overlay {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--color-white);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.reel-controls {
+  position: absolute;
+  bottom: 14px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+
+.reel-controls button {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--color-white);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reel-controls button:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.reel-sound-btn[aria-pressed='true'] {
+  background: var(--color-gold);
+  color: var(--color-maroon-dark);
+}
+
+.reel-caption {
+  position: absolute;
+  left: 12px;
+  bottom: 14px;
+  color: var(--color-white);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  z-index: 3;
+  max-width: 60%;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Mobile coverflow carousel
+   ============================================================ */
+.reel-coverflow {
+  position: relative;
+  padding: 10px 0 44px;
+}
+
+.coverflow-track {
+  position: relative;
+  height: 62vh;
+  max-height: 480px;
+  min-height: 340px;
+  overflow: hidden;
+}
+
+.coverflow-slot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 66%;
+  height: 100%;
+  transform: translateX(calc(-50% + (var(--delta) * 76%)));
+  z-index: 1;
+  transition: transform 380ms ease, filter 380ms ease, opacity 380ms ease;
+  opacity: 1;
+}
+
+.coverflow-slot .reel-card {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+/* No hover on touch devices — coverflow brightness/scale is driven purely
+   by distance-from-centre, not :hover. */
+.coverflow-slot .reel-card:hover {
+  transform: none;
+  box-shadow: var(--shadow-card);
+}
+
+.coverflow-slot .reel-video {
+  filter: brightness(0.6);
+  transform: scale(0.88);
+}
+
+.coverflow-slot.is-active {
+  transform: translateX(-50%) scale(1);
+}
+
+.coverflow-slot.is-active .reel-video {
+  filter: brightness(1);
+  transform: scale(1);
+}
+
+.coverflow-slot.is-active .reel-card {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.coverflow-slot.is-adjacent {
+  transform: translateX(calc(-50% + (var(--delta) * 70%))) scale(0.88);
+  opacity: 0.9;
+}
+
+.coverflow-slot:not(.is-active):not(.is-adjacent) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.coverflow-tap-target {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.coverflow-arrow {
+  position: absolute;
+  top: calc(50% - 22px);
+}
+
+.coverflow-arrow-prev {
+  left: 2px;
+}
+
+.coverflow-arrow-next {
+  right: 2px;
+}
+
+.coverflow-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.coverflow-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-terracotta);
+  background: var(--color-cream);
+  padding: 0;
+  cursor: pointer;
+}
+
+.coverflow-dot.is-active {
+  background: var(--color-maroon);
+  border-color: var(--color-maroon);
+}
+
+@media (max-width: 400px) {
+  .coverflow-slot {
+    width: 72%;
+  }
+}

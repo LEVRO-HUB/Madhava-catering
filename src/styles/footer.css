@@ -1,0 +1,46 @@
+.footer {
+  background: linear-gradient(135deg, var(--color-maroon-dark), var(--color-maroon));
+  color: var(--color-cream);
+  padding: 48px 0 32px;
+  margin-top: 40px;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.footer-logo {
+  width: 90px;
+  filter: brightness(1.05);
+}
+
+.footer-contact h4 {
+  color: var(--color-gold-light);
+  margin-bottom: 8px;
+}
+
+.footer-contact a {
+  display: inline-block;
+  margin: 0 10px;
+  font-weight: 600;
+  color: var(--color-cream);
+}
+
+.footer-contact a:hover {
+  color: var(--color-gold-light);
+}
+
+.footer-contact-btn {
+  display: inline-flex !important;
+  margin: 16px 0 0 !important;
+}
+
+.footer-note {
+  font-size: 13px;
+  color: rgba(255, 248, 236, 0.7);
+  margin-top: 10px;
+}

@@ -1,0 +1,55 @@
+.category-selector {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 4px 14px;
+  scrollbar-width: thin;
+}
+
+.category-pill {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-cream-deep);
+  background: var(--color-white);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.category-pill:hover {
+  border-color: var(--color-gold);
+}
+
+.category-pill.is-active {
+  background: linear-gradient(135deg, var(--color-maroon), var(--color-maroon-dark));
+  border-color: var(--color-maroon-dark);
+  color: var(--color-white);
+}
+
+.category-icon {
+  font-size: 16px;
+}
+
+.category-count {
+  background: var(--color-gold);
+  color: var(--color-maroon-dark);
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
+.category-pill.is-active .category-count {
+  background: var(--color-cream);
+}

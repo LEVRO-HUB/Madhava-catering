@@ -1,0 +1,132 @@
+.blog-article {
+  background: var(--color-cream);
+}
+
+.blog-article-container {
+  max-width: 760px;
+}
+
+.blog-article-breadcrumb {
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  margin-bottom: 18px;
+}
+
+.blog-article-breadcrumb a {
+  color: var(--color-maroon);
+  font-weight: 600;
+}
+
+.blog-article-header {
+  text-align: center;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.blog-article-header h1 {
+  font-size: clamp(26px, 4vw, 38px);
+  line-height: 1.2;
+}
+
+.blog-article-header time {
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+}
+
+.blog-article-image {
+  width: 100%;
+  max-height: 440px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 32px;
+}
+
+.blog-article-body {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+
+.blog-article-body h2 {
+  font-size: 23px;
+  margin: 36px 0 14px;
+  color: var(--color-maroon-dark);
+}
+
+.blog-article-body h3 {
+  font-size: 18px;
+  margin: 24px 0 10px;
+  color: var(--color-maroon);
+}
+
+.blog-article-body p {
+  margin-bottom: 16px;
+}
+
+.blog-article-body ul {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+
+.blog-article-body li {
+  margin-bottom: 8px;
+}
+
+.article-link-card {
+  display: block;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin: 24px 0;
+}
+
+.article-link-label {
+  display: block;
+  font-weight: 700;
+  color: var(--color-maroon);
+  font-size: 15px;
+}
+
+.article-link-desc {
+  display: block;
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+  margin-top: 4px;
+}
+
+.blog-article-faq {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1.5px solid var(--color-cream-deep);
+}
+
+.blog-article-faq h2 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  color: var(--color-maroon-dark);
+}
+
+.faq-item {
+  margin-bottom: 18px;
+}
+
+.faq-item h3 {
+  font-size: 15.5px;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.faq-item p {
+  font-size: 14.5px;
+  color: var(--color-ink-soft);
+}
+
+.blog-article-back {
+  margin-top: 36px;
+  text-align: center;
+}

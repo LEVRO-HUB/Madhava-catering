@@ -1,0 +1,143 @@
+:root {
+  /* Theme extracted from the Madhava Catering Services logo */
+  --color-gold: #f5b300;
+  --color-gold-light: #ffd54a;
+  --color-gold-dark: #c98f00;
+  --color-maroon: #a9271a;
+  --color-maroon-dark: #7a1a11;
+  --color-terracotta: #d98e4b;
+  --color-cream: #fff8ec;
+  --color-cream-deep: #fbead0;
+  --color-ink: #2b1b12;
+  --color-ink-soft: #5a4536;
+  --color-white: #ffffff;
+
+  --shadow-soft: 0 8px 24px rgba(43, 27, 18, 0.12);
+  --shadow-card: 0 4px 14px rgba(43, 27, 18, 0.1);
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  margin: 0;
+  color: var(--color-maroon-dark);
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 72px 0;
+}
+
+.section-title {
+  font-size: clamp(28px, 3.5vw, 42px);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-ink-soft);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  font-size: 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+  color: var(--color-maroon-dark);
+  box-shadow: var(--shadow-card);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 10px 20px rgba(245, 179, 0, 0.35);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-maroon);
+  border: 2px solid var(--color-maroon);
+}
+
+.btn-secondary:hover {
+  background: var(--color-maroon);
+  color: var(--color-white);
+}
+
+.btn-outline-light {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-maroon-dark);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 48px 0;
+  }
+}
