@@ -16,7 +16,7 @@ async function run() {
   const { predefinedMenus } = await import('../src/data/predefinedMenus.js');
   const { blogPosts } = await import('../src/data/blogPosts.js');
 
-  const staticRoutes = ['/', '/services', '/menus', '/blog', '/contact'];
+  const staticRoutes = ['/', '/about', '/services', '/packages', '/menus', '/gallery', '/plan-your-event', '/blog', '/contact'];
   const menuRoutes = predefinedMenus.map((m) => `/menus/${m.slug}`);
   const blogRoutes = blogPosts.map((p) => `/blog/${p.slug}`);
   const routes = [...staticRoutes, ...menuRoutes, ...blogRoutes];

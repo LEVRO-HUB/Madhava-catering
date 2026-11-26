@@ -28,8 +28,12 @@ async function getRoutes() {
   const { blogPosts } = await import('../src/data/blogPosts.js');
   return [
     '/',
+    '/about',
     '/services',
+    '/packages',
     '/menus',
+    '/gallery',
+    '/plan-your-event',
     '/blog',
     '/contact',
     ...predefinedMenus.map((m) => `/menus/${m.slug}`),

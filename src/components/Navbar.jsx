@@ -4,8 +4,11 @@ import '../styles/navbar.css';
 
 const links = [
   { to: '/#home', label: 'Home' },
-  { to: '/services', label: 'Our Services' },
-  { to: '/menus', label: 'Our Menu' },
+  { to: '/about', label: 'About' },
+  { to: '/services', label: 'Services' },
+  { to: '/packages', label: 'Packages' },
+  { to: '/menus', label: 'Menu' },
+  { to: '/gallery', label: 'Gallery' },
   { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -39,6 +42,9 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link to="/plan-your-event" className="nav-cta" onClick={handleNavClick}>
+            Plan Your Event
+          </Link>
         </nav>
       </div>
     </header>

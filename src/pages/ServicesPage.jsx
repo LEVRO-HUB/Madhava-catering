@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { services } from '../data/services.js';
 import ServiceCard from '../components/ServiceCard.jsx';
 import Seo from '../components/Seo.jsx';
+import PageHero from '../components/PageHero.jsx';
+import ProcessTimeline from '../components/ProcessTimeline.jsx';
+import CtaBand from '../components/CtaBand.jsx';
 import '../styles/services.css';
 
 export default function ServicesPage() {
@@ -13,13 +16,19 @@ export default function ServicesPage() {
         description="Wedding, buffet, Brahmin, Seemantham, corporate and family-function catering services from Madhava Catering Services — traditional South Indian catering for every occasion."
         path="/services"
       />
+      <PageHero
+        eyebrow="Our Services"
+        title="Our Catering Services"
+        crumb="Services"
+        subtitle="From traditional family celebrations to grand weddings and corporate gatherings, explore our catering services for every special occasion."
+      >
+        <div className="page-hero-actions">
+          <Link to="/plan-your-event" className="btn btn-primary">Plan Your Event</Link>
+          <Link to="/packages" className="btn btn-outline-light">Explore Packages</Link>
+        </div>
+      </PageHero>
       <section className="services-page section">
         <div className="container">
-          <h1 className="section-title">Our Catering Services</h1>
-          <p className="section-subtitle">
-            From traditional family celebrations to grand weddings and corporate gatherings, explore
-            our catering services for every special occasion.
-          </p>
 
           <div className="services-grid">
             {services.map((service) => (
@@ -29,13 +38,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="services-cta">
-        <div className="container services-cta-inner">
-          <h2>Let's Make Your Celebration Special</h2>
-          <p>Planning an event? Get in touch with Madhava Catering Services to discuss your catering requirements.</p>
-          <Link to="/contact" className="btn btn-primary">Contact Us</Link>
-        </div>
-      </section>
+      <ProcessTimeline dark />
+      <CtaBand />
     </>
   );
 }

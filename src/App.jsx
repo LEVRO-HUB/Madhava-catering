@@ -17,6 +17,21 @@ import ScrollToHash from './components/ScrollToHash.jsx';
 import ScrollEffects from './components/ScrollEffects.jsx';
 import OrnamentDivider from './components/OrnamentDivider.jsx';
 import IntroSplash from './components/IntroSplash.jsx';
+import FloatingActions from './components/FloatingActions.jsx';
+import DishMarquee from './components/DishMarquee.jsx';
+import StatsBand from './components/StatsBand.jsx';
+import OccasionExplorer from './components/OccasionExplorer.jsx';
+import WhyUs from './components/WhyUs.jsx';
+import ProcessTimeline from './components/ProcessTimeline.jsx';
+import GalleryGrid from './components/GalleryGrid.jsx';
+import FaqAccordion from './components/FaqAccordion.jsx';
+import CtaBand from './components/CtaBand.jsx';
+import { SectionHeading } from './components/Ornaments.jsx';
+import AboutPage from './pages/AboutPage.jsx';
+import PackagesPage from './pages/PackagesPage.jsx';
+import GalleryPage from './pages/GalleryPage.jsx';
+import PlannerPage from './pages/PlannerPage.jsx';
+import { Link } from 'react-router-dom';
 import Seo from './components/Seo.jsx';
 import { SITE_URL, BUSINESS_NAME, BUSINESS_LOGO, BUSINESS_PHONES } from './data/businessConfig.js';
 
@@ -49,10 +64,29 @@ function HomePage() {
       />
       <Hero />
       <MadhavaExperience />
-      <OrnamentDivider />
+      <DishMarquee />
+      <StatsBand />
+      <OccasionExplorer />
+      <WhyUs />
+      <ProcessTimeline dark />
       <CateringReels />
+      <section className="gallery-preview section">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Gallery"
+            title="A Glimpse of the Feast"
+            subtitle="Banana-leaf spreads, celebrations of every kind and the kitchen behind them."
+          />
+          <GalleryGrid limit={8} showFilters={false} />
+          <div className="gallery-preview-cta">
+            <Link to="/gallery" className="btn btn-secondary">View Full Gallery</Link>
+          </div>
+        </div>
+      </section>
       <OrnamentDivider />
       <Testimonials />
+      <FaqAccordion limit={4} />
+      <CtaBand />
     </>
   );
 }
@@ -67,6 +101,10 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/packages" element={<PackagesPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/plan-your-event" element={<PlannerPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/menus" element={<PredefinedMenuList />} />
           <Route path="/menus/:slug" element={<PredefinedMenuDetails />} />
@@ -76,6 +114,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <FloatingActions />
     </MenuSelectionProvider>
   );
 }

@@ -14,6 +14,7 @@ const REVEAL_SELECTOR = [
   '.article-link-card',
   '.orn-divider',
   '.footer-col',
+  '.rv',
 ].join(',');
 
 const prefersReducedMotion = () =>
@@ -76,9 +77,13 @@ export default function ScrollEffects() {
       { threshold: 0.15, rootMargin: '0px 0px -6% 0px' }
     );
 
+    // Elements that outlive a route change (e.g. the footer) must be observed
+    // again on every run, so track "already watched" per run, not on the node.
+    const watched = new WeakSet();
     const tag = () => {
       document.querySelectorAll(REVEAL_SELECTOR).forEach((el) => {
-        if (el.dataset.fx || el.classList.contains('reveal')) return;
+        if (watched.has(el) || el.classList.contains('is-in') || el.classList.contains('reveal')) return;
+        watched.add(el);
         el.dataset.fx = '1';
         const siblings = el.parentElement
           ? Array.from(el.parentElement.children).filter((c) => c.matches(REVEAL_SELECTOR))

@@ -6,8 +6,12 @@ import '../styles/footer.css';
 
 const quickLinks = [
   { to: '/#home', label: 'Home' },
+  { to: '/about', label: 'About Us' },
   { to: '/services', label: 'Our Services' },
+  { to: '/packages', label: 'Packages' },
   { to: '/menus', label: 'Our Menu' },
+  { to: '/gallery', label: 'Gallery' },
+  { to: '/plan-your-event', label: 'Plan Your Event' },
   { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
 ];

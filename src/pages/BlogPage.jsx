@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { blogPosts } from '../data/blogPosts.js';
 import { categoryName } from '../data/blogCategories.js';
-import BlogHero from '../components/BlogHero.jsx';
+import PageHero from '../components/PageHero.jsx';
 import BlogCategories from '../components/BlogCategories.jsx';
 import BlogSearch from '../components/BlogSearch.jsx';
 import BlogCard from '../components/BlogCard.jsx';
@@ -46,9 +46,14 @@ export default function BlogPage() {
         path="/blog"
         jsonLd={jsonLd}
       />
+      <PageHero
+        eyebrow="Journal"
+        title="The Madhava Journal"
+        crumb="Blog"
+        subtitle="Wedding catering ideas, traditional South Indian menus, event planning tips and catering guides for Chennai and Tamil Nadu."
+      />
       <section className="blog-page section">
         <div className="container">
-          <BlogHero />
 
           {featuredPost && (
             <div className="blog-featured">

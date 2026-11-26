@@ -4,10 +4,22 @@
     <loc>https://www.madhavacateringservices.example/</loc>
   </url>
   <url>
+    <loc>https://www.madhavacateringservices.example/about</loc>
+  </url>
+  <url>
     <loc>https://www.madhavacateringservices.example/services</loc>
   </url>
   <url>
+    <loc>https://www.madhavacateringservices.example/packages</loc>
+  </url>
+  <url>
     <loc>https://www.madhavacateringservices.example/menus</loc>
+  </url>
+  <url>
+    <loc>https://www.madhavacateringservices.example/gallery</loc>
+  </url>
+  <url>
+    <loc>https://www.madhavacateringservices.example/plan-your-event</loc>
   </url>
   <url>
     <loc>https://www.madhavacateringservices.example/blog</loc>
