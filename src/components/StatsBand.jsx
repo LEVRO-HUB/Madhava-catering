@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { services } from '../data/services.js';
 import { predefinedMenus } from '../data/predefinedMenus.js';
 import { dishes } from '../data/dishes.js';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 // Counters are derived from what actually exists on the site, so they can
 // never drift from reality or overstate anything.
@@ -45,6 +46,7 @@ function Stat({ value, label, start }) {
 }
 
 export default function StatsBand() {
+  const t = useT();
   const ref = useRef(null);
   const [start, setStart] = useState(false);
   useEffect(() => {
@@ -70,11 +72,11 @@ export default function StatsBand() {
     <section className="stats-band" ref={ref}>
       <div className="container stats-grid">
         {stats.map((s) => (
-          <Stat key={s.id} value={s.value} label={s.label} start={start} />
+          <Stat key={s.id} value={s.value} label={t(`stats.${s.id}`, s.label)} start={start} />
         ))}
         <div className="stat">
-          <span className="stat-text">Chennai &amp; Tamil Nadu</span>
-          <span className="stat-label">Where we serve</span>
+          <span className="stat-text">{t('stats.area', 'Chennai & Tamil Nadu')}</span>
+          <span className="stat-label">{t('stats.where', 'Where we serve')}</span>
         </div>
       </div>
     </section>

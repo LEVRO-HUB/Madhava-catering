@@ -26,6 +26,7 @@ const PORT = 4523;
 async function getRoutes() {
   const { predefinedMenus } = await import('../src/data/predefinedMenus.js');
   const { blogPosts } = await import('../src/data/blogPosts.js');
+  const { services } = await import('../src/data/services.js');
   return [
     '/',
     '/about',
@@ -34,8 +35,11 @@ async function getRoutes() {
     '/menus',
     '/gallery',
     '/plan-your-event',
+    '/build-your-feast',
+    '/brochure',
     '/blog',
     '/contact',
+    ...services.map((x) => `/services/${x.id}`),
     ...predefinedMenus.map((m) => `/menus/${m.slug}`),
     ...blogPosts.map((p) => `/blog/${p.slug}`),
   ];

@@ -31,6 +31,14 @@ import AboutPage from './pages/AboutPage.jsx';
 import PackagesPage from './pages/PackagesPage.jsx';
 import GalleryPage from './pages/GalleryPage.jsx';
 import PlannerPage from './pages/PlannerPage.jsx';
+import FeastBuilderPage from './pages/FeastBuilderPage.jsx';
+import ServiceDetailPage from './pages/ServiceDetailPage.jsx';
+import BrochurePage from './pages/BrochurePage.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
+import FestivalBanner from './components/FestivalBanner.jsx';
+import CallbackModal from './components/CallbackModal.jsx';
+import MobileActionBar from './components/MobileActionBar.jsx';
+import FxEffects from './components/FxEffects.jsx';
 import { Link } from 'react-router-dom';
 import Seo from './components/Seo.jsx';
 import { SITE_URL, BUSINESS_NAME, BUSINESS_LOGO, BUSINESS_PHONES } from './data/businessConfig.js';
@@ -95,9 +103,11 @@ export default function App() {
   return (
     <MenuSelectionProvider>
       <IntroSplash />
+      <FestivalBanner />
       <Navbar />
       <ScrollToHash />
       <ScrollEffects />
+      <FxEffects />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -105,16 +115,22 @@ export default function App() {
           <Route path="/packages" element={<PackagesPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/plan-your-event" element={<PlannerPage />} />
+          <Route path="/build-your-feast" element={<FeastBuilderPage />} />
+          <Route path="/brochure" element={<BrochurePage />} />
+          <Route path="/services/:id" element={<ServiceDetailPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/menus" element={<PredefinedMenuList />} />
           <Route path="/menus/:slug" element={<PredefinedMenuDetails />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogArticlePage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
       <FloatingActions />
+      <CallbackModal />
+      <MobileActionBar />
     </MenuSelectionProvider>
   );
 }

@@ -1,0 +1,10 @@
+{
+  "name": "Madhava Catering Services",
+  "short_name": "Madhava",
+  "description": "Traditional South Indian catering for weddings, ceremonies and family celebrations in Chennai and Tamil Nadu.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff8ec",
+  "theme_color": "#7a1a11",
+  "icons": [{ "src": "/assets/logo/madhava-logo.png", "sizes": "380x410", "type": "image/png" }]
+}

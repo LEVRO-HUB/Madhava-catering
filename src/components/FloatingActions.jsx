@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { WHATSAPP_NUMBER } from '../data/businessConfig.js';
+import { openCallback } from './CallbackModal.jsx';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 // Floating WhatsApp button + back-to-top, shown site-wide.
 export default function FloatingActions() {
+  const t = useT();
   const [showTop, setShowTop] = useState(false);
   useEffect(() => {
     const on = () => setShowTop(window.scrollY > 700);
@@ -17,18 +20,19 @@ export default function FloatingActions() {
         type="button"
         className={`float-btn float-top ${showTop ? 'is-on' : ''}`}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Back to top"
+        aria-label={t('float.top', 'Back to top')}
         tabIndex={showTop ? 0 : -1}
       >
         ↑
       </button>
+      <button type="button" className="float-btn float-cb" onClick={openCallback} aria-label={t('float.cb', 'Request a call back')}>☎</button>
       {WHATSAPP_NUMBER && (
         <a
           className="float-btn float-wa"
           href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello Madhava Catering Services, I would like to enquire about catering.')}`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Chat with us on WhatsApp"
+          aria-label={t('float.wa', 'Chat with us on WhatsApp')}
         >
           <svg viewBox="0 0 32 32" aria-hidden="true">
             <path

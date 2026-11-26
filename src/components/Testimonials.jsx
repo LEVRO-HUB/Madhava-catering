@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { testimonials, TESTIMONIALS_ARE_SAMPLE } from '../data/testimonials.js';
 import TestimonialCard from './TestimonialCard.jsx';
 import '../styles/testimonials.css';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 const GAP = 24;
 
@@ -14,6 +15,7 @@ function itemsForWidth(width) {
 // Gently auto-advances every few seconds; pauses on hover/focus/touch, when
 // the tab is hidden, and never runs for users who prefer reduced motion.
 export default function Testimonials() {
+  const t = useT();
   const trackRef = useRef(null);
   const [itemsPerView, setItemsPerView] = useState(() =>
     typeof window !== 'undefined' ? itemsForWidth(window.innerWidth) : 3
@@ -101,11 +103,10 @@ export default function Testimonials() {
     <section className="testimonials section">
       <div className="container">
         <div className="testimonials-header">
-          <span className="testimonials-eyebrow">Words From Our Customers</span>
-          <h2 className="testimonials-heading">Celebrations Made Memorable</h2>
+          <span className="testimonials-eyebrow">{t('test.eyebrow', 'Words From Our Customers')}</span>
+          <h2 className="testimonials-heading">{t('test.title', 'Celebrations Made Memorable')}</h2>
           <p className="testimonials-subtitle">
-            Discover the experiences shared by families and guests who celebrated with Madhava
-            Catering Services.
+            {t('test.sub', 'Discover the experiences shared by families and guests who celebrated with Madhava Catering Services.')}
           </p>
           {TESTIMONIALS_ARE_SAMPLE && (
             <p className="testimonials-sample-note">

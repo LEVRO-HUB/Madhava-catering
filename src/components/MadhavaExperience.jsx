@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/madhava-experience.css';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 const CDN = 'https://res.cloudinary.com/eppaoadw/image/fetch/f_auto,q_auto,w_1000/';
 const SITE = 'https://madhava-catering.pages.dev';
@@ -67,6 +68,7 @@ const features = [
 ];
 
 export default function MadhavaExperience() {
+  const t = useT();
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -105,18 +107,16 @@ export default function MadhavaExperience() {
       <div className="container experience-top">
         <div className="experience-intro">
           <span className="experience-eyebrow reveal" style={{ transitionDelay: '0ms' }}>
-            The Madhava Experience
+            {t('exp.eyebrow', 'The Madhava Experience')}
           </span>
           <h2 className="experience-heading reveal" style={{ transitionDelay: '90ms' }}>
-            Every Celebration Deserves a Taste of Tradition.
+            {t('exp.heading', 'Every Celebration Deserves a Taste of Tradition.')}
           </h2>
           <p className="experience-copy reveal" style={{ transitionDelay: '180ms' }}>
-            At Madhava Catering Services, we believe that food brings people together. From
-            traditional wedding feasts to cherished family celebrations, we focus on serving
-            delicious food and creating memorable dining experiences.
+            {t('exp.copy', 'At Madhava Catering Services, we believe that food brings people together. From traditional wedding feasts to cherished family celebrations, we focus on serving delicious food and creating memorable dining experiences.')}
           </p>
           <Link to="/services" className="btn btn-primary reveal" style={{ transitionDelay: '270ms' }}>
-            Explore Our Services
+            {t('exp.btn', 'Explore Our Services')}
           </Link>
         </div>
 
@@ -151,8 +151,8 @@ export default function MadhavaExperience() {
               style={{ transitionDelay: `${320 + i * 110}ms` }}
             >
               <span className="feature-icon">{feature.icon}</span>
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
+              <h3>{t(`exp.${feature.id}.t`, feature.title)}</h3>
+              <p>{t(`exp.${feature.id}.d`, feature.description)}</p>
             </div>
           ))}
         </div>

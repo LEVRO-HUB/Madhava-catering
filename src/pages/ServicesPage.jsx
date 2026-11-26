@@ -7,8 +7,10 @@ import PageHero from '../components/PageHero.jsx';
 import ProcessTimeline from '../components/ProcessTimeline.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import '../styles/services.css';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 export default function ServicesPage() {
+  const t = useT();
   return (
     <>
       <Seo
@@ -17,14 +19,14 @@ export default function ServicesPage() {
         path="/services"
       />
       <PageHero
-        eyebrow="Our Services"
-        title="Our Catering Services"
-        crumb="Services"
-        subtitle="From traditional family celebrations to grand weddings and corporate gatherings, explore our catering services for every special occasion."
+        eyebrow={t('svc.eyebrow', 'Our Services')}
+        title={t('svc.title', 'Our Catering Services')}
+        crumb={t('nav.services', 'Services')}
+        subtitle={t('svc.sub', 'From traditional family celebrations to grand weddings and corporate gatherings, explore our catering services for every special occasion.')}
       >
         <div className="page-hero-actions">
-          <Link to="/plan-your-event" className="btn btn-primary">Plan Your Event</Link>
-          <Link to="/packages" className="btn btn-outline-light">Explore Packages</Link>
+          <Link to="/plan-your-event" className="btn btn-primary">{t('nav.plan', 'Plan Your Event')}</Link>
+          <Link to="/packages" className="btn btn-outline-light">{t('svc.explore', 'Explore Packages')}</Link>
         </div>
       </PageHero>
       <section className="services-page section">

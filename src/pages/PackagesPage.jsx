@@ -9,6 +9,7 @@ import CtaBand from '../components/CtaBand.jsx';
 import { SectionHeading } from '../components/Ornaments.jsx';
 import { predefinedMenus } from '../data/predefinedMenus.js';
 import '../styles/predefined-menus.css';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 const FILTERS = [
   { id: 'all', label: 'All Menus' },
@@ -16,6 +17,7 @@ const FILTERS = [
 ];
 
 export default function PackagesPage() {
+  const t = useT();
   const [filter, setFilter] = useState('all');
   const list = predefinedMenus.filter((m) => filter === 'all' || m.vegNonVeg === filter);
 
@@ -27,14 +29,15 @@ export default function PackagesPage() {
         path="/packages"
       />
       <PageHero
-        eyebrow="Packages"
-        title="Find the Right Feast"
-        crumb="Packages"
-        subtitle="Start with your occasion, then choose a menu. Everything can be tailored once we talk."
+        eyebrow={t('pkg.eyebrow', 'Packages')}
+        title={t('pkg.title', 'Find the Right Feast')}
+        crumb={t('nav.packages', 'Packages')}
+        subtitle={t('pkg.sub', 'Start with your occasion, then choose a menu. Everything can be tailored once we talk.')}
       >
         <div className="page-hero-actions">
-          <Link to="/plan-your-event" className="btn btn-primary">Plan Your Event</Link>
-          <Link to="/menus" className="btn btn-outline-light">Browse All Menus</Link>
+          <Link to="/plan-your-event" className="btn btn-primary">{t('nav.plan', 'Plan Your Event')}</Link>
+          <Link to="/build-your-feast" className="btn btn-outline-light">{t('hero.feast', 'Build Your Feast')}</Link>
+          <Link to="/menus" className="btn btn-outline-light">{t('pkg.browse', 'Browse All Menus')}</Link>
         </div>
       </PageHero>
 
@@ -43,9 +46,9 @@ export default function PackagesPage() {
       <section className="predefined-menus section is-tinted">
         <div className="container">
           <SectionHeading
-            eyebrow="Signature Menus"
-            title="Menu Packages"
-            subtitle="See the complete food list and banana-leaf presentation for each. Final dishes are confirmed with you."
+            eyebrow={t('pkg.menus.eyebrow', 'Signature Menus')}
+            title={t('pkg.menus.title', 'Menu Packages')}
+            subtitle={t('pkg.menus.sub', 'See the complete food list and banana-leaf presentation for each. Final dishes are confirmed with you.')}
           />
           <div className="gal-filters rv" role="group" aria-label="Filter menus">
             {FILTERS.map((f) => (
@@ -56,7 +59,7 @@ export default function PackagesPage() {
                 aria-pressed={filter === f.id}
                 onClick={() => setFilter(f.id)}
               >
-                {f.label}
+                {t(f.id === 'all' ? 'pkg.all' : 'pkg.veg', f.label)}
               </button>
             ))}
           </div>

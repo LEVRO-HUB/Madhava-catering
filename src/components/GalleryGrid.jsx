@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { galleryItems, galleryCategories } from '../data/siteContent.js';
 import SafeImg from './SafeImg.jsx';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 // Filterable masonry-style gallery with an accessible lightbox
 // (Esc closes, ←/→ navigate, focus is returned to the opened tile).
 export default function GalleryGrid({ limit, showFilters = true }) {
+  const t = useT();
   const [cat, setCat] = useState('all');
   const [openIdx, setOpenIdx] = useState(-1);
   const lastFocus = useRef(null);
@@ -52,7 +54,7 @@ export default function GalleryGrid({ limit, showFilters = true }) {
               aria-pressed={cat === c.id}
               onClick={() => setCat(c.id)}
             >
-              {c.label}
+              {t(`gal.${c.id}`, c.label)}
             </button>
           ))}
         </div>

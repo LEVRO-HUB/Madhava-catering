@@ -16,10 +16,12 @@ async function run() {
   const { predefinedMenus } = await import('../src/data/predefinedMenus.js');
   const { blogPosts } = await import('../src/data/blogPosts.js');
 
-  const staticRoutes = ['/', '/about', '/services', '/packages', '/menus', '/gallery', '/plan-your-event', '/blog', '/contact'];
+  const staticRoutes = ['/', '/about', '/services', '/packages', '/menus', '/gallery', '/plan-your-event', '/build-your-feast', '/brochure', '/blog', '/contact'];
   const menuRoutes = predefinedMenus.map((m) => `/menus/${m.slug}`);
   const blogRoutes = blogPosts.map((p) => `/blog/${p.slug}`);
-  const routes = [...staticRoutes, ...menuRoutes, ...blogRoutes];
+  const { services } = await import('../src/data/services.js');
+  const serviceRoutes = services.map((s) => `/services/${s.id}`);
+  const routes = [...staticRoutes, ...serviceRoutes, ...menuRoutes, ...blogRoutes];
 
   const urls = routes
     .map((route) => {

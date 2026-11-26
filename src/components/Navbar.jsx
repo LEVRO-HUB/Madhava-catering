@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import LanguageToggle from './LanguageToggle.jsx';
+import { useT } from '../i18n/LanguageContext.jsx';
 import '../styles/navbar.css';
 
 const links = [
-  { to: '/#home', label: 'Home' },
-  { to: '/about', label: 'About' },
-  { to: '/services', label: 'Services' },
-  { to: '/packages', label: 'Packages' },
-  { to: '/menus', label: 'Menu' },
-  { to: '/gallery', label: 'Gallery' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/#home', key: 'home', label: 'Home' },
+  { to: '/about', key: 'about', label: 'About' },
+  { to: '/services', key: 'services', label: 'Services' },
+  { to: '/packages', key: 'packages', label: 'Packages' },
+  { to: '/menus', key: 'menu', label: 'Menu' },
+  { to: '/gallery', key: 'gallery', label: 'Gallery' },
+  { to: '/blog', key: 'blog', label: 'Blog' },
+  { to: '/contact', key: 'contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const t = useT();
 
   const handleNavClick = () => setOpen(false);
 
@@ -39,12 +42,13 @@ export default function Navbar() {
         <nav className={`navbar-links ${open ? 'is-open' : ''}`}>
           {links.map((link) => (
             <Link key={link.to} to={link.to} onClick={handleNavClick}>
-              {link.label}
+              {t(`nav.${link.key}`, link.label)}
             </Link>
           ))}
           <Link to="/plan-your-event" className="nav-cta" onClick={handleNavClick}>
-            Plan Your Event
+            {t('nav.plan', 'Plan Your Event')}
           </Link>
+          <LanguageToggle />
         </nav>
       </div>
     </header>

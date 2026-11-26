@@ -9,10 +9,12 @@ import BlogCTA from '../components/BlogCTA.jsx';
 import Seo from '../components/Seo.jsx';
 import { SITE_URL, BUSINESS_NAME } from '../data/businessConfig.js';
 import '../styles/blog.css';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 const featuredPost = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date))[0];
 
 export default function BlogPage() {
+  const t = useT();
   const [category, setCategory] = useState('all');
   const [search, setSearch] = useState('');
 
@@ -47,10 +49,10 @@ export default function BlogPage() {
         jsonLd={jsonLd}
       />
       <PageHero
-        eyebrow="Journal"
-        title="The Madhava Journal"
-        crumb="Blog"
-        subtitle="Wedding catering ideas, traditional South Indian menus, event planning tips and catering guides for Chennai and Tamil Nadu."
+        eyebrow={t('blog.eyebrow', 'Journal')}
+        title={t('blog.title', 'The Madhava Journal')}
+        crumb={t('nav.blog', 'Blog')}
+        subtitle={t('blog.sub', 'Wedding catering ideas, traditional South Indian menus, event planning tips and catering guides for Chennai and Tamil Nadu.')}
       />
       <section className="blog-page section">
         <div className="container">

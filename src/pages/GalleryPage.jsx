@@ -4,8 +4,10 @@ import PageHero from '../components/PageHero.jsx';
 import Seo from '../components/Seo.jsx';
 import GalleryGrid from '../components/GalleryGrid.jsx';
 import CtaBand from '../components/CtaBand.jsx';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 export default function GalleryPage() {
+  const t = useT();
   return (
     <>
       <Seo
@@ -14,13 +16,13 @@ export default function GalleryPage() {
         path="/gallery"
       />
       <PageHero
-        eyebrow="Gallery"
-        title="A Glimpse of the Feast"
-        crumb="Gallery"
-        subtitle="Banana-leaf spreads, celebrations of every kind and the kitchen that makes them happen."
+        eyebrow={t('gal.eyebrow', 'Gallery')}
+        title={t('gal.title', 'A Glimpse of the Feast')}
+        crumb={t('nav.gallery', 'Gallery')}
+        subtitle={t('gal.sub', 'Banana-leaf spreads, celebrations of every kind and the kitchen that makes them happen.')}
       >
         <div className="page-hero-actions">
-          <Link to="/#reels" className="btn btn-outline-light">Watch Our Reels</Link>
+          <Link to="/#reels" className="btn btn-outline-light">{t('gal.reels', 'Watch Our Reels')}</Link>
         </div>
       </PageHero>
 
@@ -28,8 +30,7 @@ export default function GalleryPage() {
         <div className="container">
           <GalleryGrid />
           <p className="gallery-note">
-            Imagery shown is representative of our menus and celebrations. Real event photographs
-            are added as they are approved.
+            {t('gal.note', 'Imagery shown is representative of our menus and celebrations. Real event photographs are added as they are approved.')}
           </p>
         </div>
       </section>

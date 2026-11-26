@@ -3,20 +3,24 @@ import { Link } from 'react-router-dom';
 import { services } from '../data/services.js';
 import { BUSINESS_NAME, WHATSAPP_NUMBER } from '../data/businessConfig.js';
 import '../styles/footer.css';
+import { useT, localizeService } from '../i18n/LanguageContext.jsx';
 
 const quickLinks = [
-  { to: '/#home', label: 'Home' },
-  { to: '/about', label: 'About Us' },
-  { to: '/services', label: 'Our Services' },
-  { to: '/packages', label: 'Packages' },
-  { to: '/menus', label: 'Our Menu' },
-  { to: '/gallery', label: 'Gallery' },
-  { to: '/plan-your-event', label: 'Plan Your Event' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/#home', k: 'nav.home', label: 'Home' },
+  { to: '/about', k: 'nav.about', label: 'About Us' },
+  { to: '/services', k: 'nav.services', label: 'Our Services' },
+  { to: '/packages', k: 'nav.packages', label: 'Packages' },
+  { to: '/menus', k: 'nav.menu', label: 'Our Menu' },
+  { to: '/gallery', k: 'nav.gallery', label: 'Gallery' },
+  { to: '/plan-your-event', k: 'nav.plan', label: 'Plan Your Event' },
+  { to: '/build-your-feast', k: 'ft.feast', label: 'Build Your Feast' },
+  { to: '/brochure', k: 'ft.brochure', label: 'E-Brochure (PDF)' },
+  { to: '/blog', k: 'nav.blog', label: 'Blog' },
+  { to: '/contact', k: 'nav.contact', label: 'Contact' },
 ];
 
 export default function Footer() {
+  const t = useT();
   return (
     <footer id="contact" className="footer">
       <div className="container footer-grid">
@@ -27,35 +31,34 @@ export default function Footer() {
             className="footer-logo"
           />
           <p className="footer-tagline">
-            Traditional South Indian catering for weddings, receptions and family
-            celebrations, made with love and served with care.
+            {t('ft.tagline', 'Traditional South Indian catering for weddings, receptions and family celebrations, made with love and served with care.')}
           </p>
         </div>
 
         <nav className="footer-col" aria-label="Footer quick links">
-          <h4>Quick Links</h4>
+          <h4>{t('ft.quick', 'Quick Links')}</h4>
           <ul className="footer-list">
             {quickLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to}>{link.label}</Link>
+                <Link to={link.to}>{t(link.k, link.label)}</Link>
               </li>
             ))}
           </ul>
         </nav>
 
         <nav className="footer-col" aria-label="Footer services">
-          <h4>Our Services</h4>
+          <h4>{t('ft.services', 'Our Services')}</h4>
           <ul className="footer-list">
             {services.map((service) => (
               <li key={service.id}>
-                <Link to="/services">{service.title}</Link>
+                <Link to={`/services/${service.id}`}>{localizeService(service, t).title}</Link>
               </li>
             ))}
           </ul>
         </nav>
 
         <div className="footer-col footer-contact">
-          <h4>Contact Us</h4>
+          <h4>{t('ft.contact', 'Contact Us')}</h4>
           <ul className="footer-list">
             <li>
               <a href="tel:9840839157">98408 39157</a>
@@ -70,21 +73,20 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  WhatsApp us
+                  {t('ft.wa', 'WhatsApp us')}
                 </a>
               </li>
             )}
           </ul>
           <Link to="/contact" className="btn btn-primary footer-contact-btn">
-            Enquire Now
+            {t('ft.enquire', 'Enquire Now')}
           </Link>
         </div>
       </div>
 
       <div className="container footer-bottom">
         <p className="footer-note">
-          © {new Date().getFullYear()} {BUSINESS_NAME}. Traditional taste, memorable
-          celebrations.
+          © {new Date().getFullYear()} {BUSINESS_NAME}. {t('ft.note', 'Traditional taste, memorable celebrations.')}
         </p>
       </div>
     </footer>

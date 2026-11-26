@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useT, localizeService } from '../i18n/LanguageContext.jsx';
 
-export default function ServiceCard({ service }) {
+export default function ServiceCard({ service: raw, linkable = true }) {
+  const t = useT();
+  const service = localizeService(raw, t);
   const [imgError, setImgError] = useState(false);
 
   return (
@@ -22,6 +26,11 @@ export default function ServiceCard({ service }) {
       <div className="service-card-body">
         <h3>{service.title}</h3>
         <p>{service.description}</p>
+        {linkable && (
+          <Link to={`/services/${service.id}`} className="service-more">
+            {t('svc.details', 'View details')} <span aria-hidden="true">→</span>
+          </Link>
+        )}
       </div>
     </div>
   );

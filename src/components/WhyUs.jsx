@@ -1,15 +1,17 @@
 import React from 'react';
 import { whyUs } from '../data/siteContent.js';
 import { SectionHeading, FeatureIcon } from './Ornaments.jsx';
+import { useT } from '../i18n/LanguageContext.jsx';
 
 export default function WhyUs() {
+  const t = useT();
   return (
     <section className="whyus section">
       <div className="container">
         <SectionHeading
-          eyebrow="Why Madhava"
-          title="Tradition You Can Taste, Service You Can Trust"
-          subtitle="What families choose us for, in the way we serve every celebration."
+          eyebrow={t('why.eyebrow', 'Why Madhava')}
+          title={t('why.title', 'Tradition You Can Taste, Service You Can Trust')}
+          subtitle={t('why.sub', 'What families choose us for, in the way we serve every celebration.')}
         />
         <div className="whyus-grid">
           {whyUs.map((w, i) => (
@@ -17,8 +19,8 @@ export default function WhyUs() {
               <span className="whyus-icon">
                 <FeatureIcon name={w.icon} />
               </span>
-              <h3>{w.title}</h3>
-              <p>{w.text}</p>
+              <h3>{t(`why.${w.id}.t`, w.title)}</h3>
+              <p>{t(`why.${w.id}.d`, w.text)}</p>
             </div>
           ))}
         </div>
