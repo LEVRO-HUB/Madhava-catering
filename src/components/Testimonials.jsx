@@ -11,10 +11,8 @@ function itemsForWidth(width) {
   return 1;
 }
 
-// No autoplay: the brief only requires pausing on hover/focus "if autoplay
-// is used" — this carousel is manual-only (arrows/keyboard/swipe), which
-// keeps it accessible and avoids unnecessary motion on a page that already
-// has an autoplaying hero slideshow and reel carousel.
+// Gently auto-advances every few seconds; pauses on hover/focus/touch, when
+// the tab is hidden, and never runs for users who prefer reduced motion.
 export default function Testimonials() {
   const trackRef = useRef(null);
   const [itemsPerView, setItemsPerView] = useState(() =>
@@ -72,6 +70,20 @@ export default function Testimonials() {
     track.scrollTo({ left: pageIndex * cardWidth, behavior: reducedMotion ? 'auto' : 'smooth' });
   };
 
+  const pausedRef = useRef(false);
+  useEffect(() => {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return undefined;
+    const id = setInterval(() => {
+      const track = trackRef.current;
+      if (!track || pausedRef.current || document.hidden) return;
+      const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+      if (atEnd) track.scrollTo({ left: 0, behavior: 'smooth' });
+      else scroll(1);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [itemsPerView]);
+
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowRight') {
       e.preventDefault();
@@ -106,6 +118,12 @@ export default function Testimonials() {
         <div
           className="testimonial-carousel"
           onKeyDown={handleKeyDown}
+          onMouseEnter={() => { pausedRef.current = true; }}
+          onMouseLeave={() => { pausedRef.current = false; }}
+          onFocus={() => { pausedRef.current = true; }}
+          onBlur={() => { pausedRef.current = false; }}
+          onTouchStart={() => { pausedRef.current = true; }}
+          onTouchEnd={() => { setTimeout(() => { pausedRef.current = false; }, 6000); }}
           role="region"
           aria-label="Customer testimonials carousel"
         >

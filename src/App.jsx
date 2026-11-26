@@ -14,6 +14,9 @@ import BlogPage from './pages/BlogPage.jsx';
 import BlogArticlePage from './pages/BlogArticlePage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import ScrollToHash from './components/ScrollToHash.jsx';
+import ScrollEffects from './components/ScrollEffects.jsx';
+import OrnamentDivider from './components/OrnamentDivider.jsx';
+import IntroSplash from './components/IntroSplash.jsx';
 import Seo from './components/Seo.jsx';
 import { SITE_URL, BUSINESS_NAME, BUSINESS_LOGO, BUSINESS_PHONES } from './data/businessConfig.js';
 
@@ -46,7 +49,9 @@ function HomePage() {
       />
       <Hero />
       <MadhavaExperience />
+      <OrnamentDivider />
       <CateringReels />
+      <OrnamentDivider />
       <Testimonials />
     </>
   );
@@ -55,8 +60,10 @@ function HomePage() {
 export default function App() {
   return (
     <MenuSelectionProvider>
+      <IntroSplash />
       <Navbar />
       <ScrollToHash />
+      <ScrollEffects />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />

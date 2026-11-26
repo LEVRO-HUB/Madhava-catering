@@ -2,12 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { heroSlides } from '../data/heroSlides.js';
 import HeroSlideshow from './HeroSlideshow.jsx';
+import HeroSparkles from './HeroSparkles.jsx';
 import '../styles/hero.css';
 
 export default function Hero() {
   return (
     <section id="home" className="hero">
       <HeroSlideshow slides={heroSlides} />
+      <HeroSparkles />
       <div className="container hero-inner">
         <img className="hero-logo" src="/assets/logo/madhava-logo.png" alt="Madhava Catering Services" />
         <h1 className="hero-title">Traditional Taste, Memorable Celebrations</h1>
