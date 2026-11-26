@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { heroSlides } from '../data/heroSlides.js';
 import HeroSlideshow from './HeroSlideshow.jsx';
 import HeroSparkles from './HeroSparkles.jsx';
-import HeroVideo from './HeroVideo.jsx';
 import '../styles/hero.css';
 import { useT } from '../i18n/LanguageContext.jsx';
 
@@ -12,7 +11,6 @@ export default function Hero() {
   return (
     <section id="home" className="hero">
       <HeroSlideshow slides={heroSlides} />
-      <HeroVideo />
       <HeroSparkles />
       <div className="container hero-inner">
         <img className="hero-logo" src="/assets/logo/madhava-logo.png" alt="Madhava Catering Services" />
